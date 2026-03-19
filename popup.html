@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Magic Cursor</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 240px;
+      background: #0c0c0e;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+    .header {
+      padding: 16px 16px 13px;
+      border-bottom: 1px solid #1c1c1e;
+    }
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 4px;
+    }
+    .logo-icon {
+      width: 28px; height: 28px;
+      background: #67E8F9;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: #000;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+    .app-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.01em;
+    }
+    .tagline {
+      font-size: 9px;
+      color: #3a3a3e;
+      letter-spacing: 0.08em;
+      padding-left: 37px;
+      text-transform: uppercase;
+    }
+
+    .body { padding: 14px 16px; }
+
+    .status-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 11px;
+    }
+    .status-label {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #3a3a3e;
+    }
+    .badge {
+      font-size: 9px; font-weight: 700;
+      padding: 3px 8px; border-radius: 999px;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .badge.on  { background: #67E8F9; color: #000; }
+    .badge.off { background: #1c1c1e; color: #3a3a3e; }
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      transition: all 0.12s;
+    }
+    .btn.activate {
+      background: #67E8F9;
+      color: #000;
+    }
+    .btn.activate:hover { background: #a5f3fc; }
+    .btn.deactivate {
+      background: #1c1c1e;
+      color: #888;
+      border: 1px solid #2a2a2e;
+    }
+    .btn.deactivate:hover { background: #222226; color: #aaa; }
+
+    .hint {
+      margin-top: 9px;
+      font-size: 9px;
+      color: #3a3a3e;
+      text-align: center;
+      letter-spacing: 0.05em;
+      line-height: 1.8;
+      text-transform: uppercase;
+    }
+    .hint strong { color: #555; }
+
+    .divider { border: none; border-top: 1px solid #1c1c1e; margin: 12px 0; }
+
+    .features { display: flex; flex-direction: column; gap: 6px; }
+    .feat {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      color: #888;
+      letter-spacing: 0.02em;
+    }
+    .feat-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .feat-dot.active { background: #67E8F9; }
+    .feat-dot.dim { background: #2a2a2e; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo-row">
+      <div class="logo-icon">✦</div>
+      <span class="app-name">Magic Cursor</span>
+    </div>
+    <div class="tagline">Visual AI Prompt Builder</div>
+  </div>
+
+  <div class="body">
+    <div class="status-row">
+      <span class="status-label">Status</span>
+      <span class="badge off" id="badge">Inactive</span>
+    </div>
+
+    <button class="btn activate" id="toggleBtn">
+      <span id="btnIcon">✦</span>
+      <span id="btnText">Activate</span>
+    </button>
+
+    <p class="hint">Double tap <strong>`</strong> to toggle anywhere</p>
+
+    <hr class="divider" />
+
+    <div class="features">
+      <div class="feat"><div class="feat-dot active"></div>Drag anything to move</div>
+      <div class="feat"><div class="feat-dot active"></div>Pull corners to resize</div>
+      <div class="feat"><div class="feat-dot dim"></div>Font · Padding · Radius</div>
+      <div class="feat"><div class="feat-dot dim"></div>Colors · Opacity</div>
+      <div class="feat"><div class="feat-dot dim"></div>Framework-aware prompts</div>
+      <div class="feat"><div class="feat-dot dim"></div>Works on any website</div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
